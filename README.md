@@ -1,5 +1,5 @@
-# my test app
-===============
+my-service-mod
+==============
 
 
 ## rails generated readme:
