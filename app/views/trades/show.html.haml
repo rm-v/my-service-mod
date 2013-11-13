@@ -1,0 +1,15 @@
+%p#notice= notice
+
+%p
+  %b Branch:
+  = @trade.branch_id
+%p
+  %b Description:
+  = @trade.description
+%p
+  %b Name:
+  = @trade.name
+
+= link_to 'Edit', edit_trade_path(@trade)
+\|
+= link_to 'Back', trades_path
