@@ -1,0 +1,29 @@
+%h1 Listing services
+
+%table
+  %tr
+    %th Branch
+    %th Description
+    %th Duration
+    %th Name
+    %th Price
+    %th Trade
+    %th
+    %th
+    %th
+
+  - @services.each do |service|
+    %tr
+      %td= service.branch_id
+      %td= service.description
+      %td= service.duration
+      %td= service.name
+      %td= service.price
+      %td= service.trade_id
+      %td= link_to 'Show', service
+      %td= link_to 'Edit', edit_service_path(service)
+      %td= link_to 'Destroy', service, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Service', new_service_path
