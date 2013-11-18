@@ -265,3 +265,7 @@ vendor
   External libraries that the application depends on. Also includes the plugins
   subdirectory. If the app has frozen rails, those gems also go here, under
   vendor/rails/. This directory is in the load path.
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/rm-v/my-service-mod/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
