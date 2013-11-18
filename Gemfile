@@ -10,6 +10,10 @@ gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
 
+group :development, :test do 
+  gem 'rspec-rails'
+end
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
