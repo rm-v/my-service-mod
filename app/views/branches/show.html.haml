@@ -1,6 +1,20 @@
 %p#notice= notice
 
+%p 
+  %b Ten branch ma nazwę:
+  = @branch.name
+
+%p
+  %b Ten branch ma opis:
+  = @branch.description
+    
+%p 
+  %b i oczywiście id:
+  = @branch.id
+
 
 = link_to 'Edit', edit_branch_path(@branch)
 \|
 = link_to 'Back', branches_path
+
+= link_to 'Strona startowa', static_pages_home_path
