@@ -1,7 +1,7 @@
 %h1 Wprowadź zmiany:
 
-= render 'form"
+= render 'form'
 
-= link_to @user
- 
-= link_to user_path
+= link_to "pokaż dane",  @user
+\| 
+= link_to "lista urzytkowników", user_path

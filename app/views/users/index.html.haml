@@ -9,13 +9,14 @@
     %th 
     %th 
 
-- @users.each do |user|
-  %td= user.first_name
-  %td= user.last_name
-  %td= user.branch_id
-  %td= link_to "szczegóły", user   #{#TODO: sprawdzić opcje: user_path(user), user_path(user.id)}
-  %td= link_to "zmień", edit_user_path(user.id)
-  %td= link_to "usuń", user, method: :delete, data: {confirm: "czy na pewno usunąć} 
+  - @users.each do |user| 
+    %tr
+      %td= user.first_name
+      %td= user.last_name
+      %td= user.branch_id
+      %td= link_to "szczegóły", user   #{#TODO: sprawdzić opcje: user_path(user), user_path(user.id)}
+      %td= link_to "zmień", edit_user_path(user)
+      %td= link_to "usuń", user, method: :delete, data: {confirm: "czy na pewno usunąć"} 
       
     
 %br
