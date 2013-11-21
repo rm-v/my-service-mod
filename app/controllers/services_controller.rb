@@ -3,7 +3,7 @@ class ServicesController < ApplicationController
   # GET /services.json
   def index
     @services = Service.all
-
+    @time = Date.current
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @services }

@@ -1,0 +1,23 @@
+%h1 dane urzytkownika:
+%p unkod test ąćęłńóśźż
+
+%ul 
+  %li
+    %p unkod test ąćęłńóśźż
+    %b nazwisko:
+    = @user.last_name
+  %li
+    %b imię:
+    = @user.first_name
+  %li 
+    %b email
+    = @user.email
+  %li 
+    %b salon
+    = @user.branch_id
+
+= link_to "zmień dane", edit_user_path(@user); 
+= "|"; 
+= link_to 'lista urzytkowników', users_path
+\|
+= link_to 'dodaj nowego', new_user_path

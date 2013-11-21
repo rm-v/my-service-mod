@@ -1,0 +1,20 @@
+= form_for @user do |f|
+  
+  .field
+    = f.label 'Nazwisko'
+    = f.text_field :last_name
+  .field 
+    = f.label :Imię
+    = f.text_field :first_name
+  .field
+    = f.label :email
+    = f.text_field :email
+  .field 
+    = f.label :password
+    = f.text_field :password
+  .field
+    = f.label :branch_id
+    = f.text_field :branch_id
+    
+  .actions
+    = f.submit 'Zapisz'

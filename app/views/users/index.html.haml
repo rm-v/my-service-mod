@@ -1,0 +1,26 @@
+%h1 urzytkownicy:
+
+%table
+  %tr
+    %th Imię
+    %th Nazwisko
+    %th Salon
+    %th 
+    %th 
+    %th 
+
+- @users.each do |user|
+  %td= user.first_name
+  %td= user.last_name
+  %td= user.branch_id
+  %td= link_to "szczegóły", user   #{#TODO: sprawdzić opcje: user_path(user), user_path(user.id)}
+  %td= link_to "zmień", edit_user_path(user.id)
+  %td= link_to "usuń", user, method: :delete, data: {confirm: "czy na pewno usunąć} 
+      
+    
+%br
+= link_to "stwórz urzytkownika", new_user_path
+-#or the same:
+=# link_to("create user v.2", :controller => "users", :action => "new") + "|"
+=# link_to("create user v.3", controller: "users", action: "new")
+=# link_to("create user v.4", controller: :users, action: :new) 
