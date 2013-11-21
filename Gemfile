@@ -9,6 +9,7 @@ gem 'rake'
 gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
+gem "thin"
 
 group :development, :test do 
   gem 'rspec-rails'
