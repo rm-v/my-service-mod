@@ -63,6 +63,8 @@ GEM
     multi_json (1.8.2)
     mysql2 (0.3.13)
     polyglot (0.3.3)
+    quiet_assets (1.0.2)
+      railties (>= 3.1, < 5.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -133,6 +135,7 @@ DEPENDENCIES
   haml-rails
   jquery-rails
   mysql2
+  quiet_assets
   rails (= 3.2.14)
   rake
   rspec-rails
