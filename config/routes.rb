@@ -1,7 +1,19 @@
 MyServiceMod::Application.routes.draw do
+
   get "static_pages/home", as: "home"
   root :to => 'static_pages#home'
 
+  #get "new/services/summary", to: "new::services#summary" #or:
+  namespace :newer do 
+    get "services/summary", to: "services#summary"
+    resources :services
+  end
+  
+  namespace :newer do 
+    get "services2/summary", to: "aaa::services2#summary"
+    resources :services2
+  end
+  
   resources :branches
   resources :trades
   resources :services
