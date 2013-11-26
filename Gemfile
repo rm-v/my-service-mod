@@ -10,6 +10,7 @@ gem 'mysql2'
 gem 'haml'
 gem 'haml-rails'
 gem "thin"
+gem 'better_errors'
 
 group :development, :test do 
   gem 'rspec-rails'
