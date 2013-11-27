@@ -1,2 +1,2 @@
-module New::ServicesHelper
+module Newer::ServicesHelper
 end
