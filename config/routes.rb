@@ -2,7 +2,12 @@ MyServiceMod::Application.routes.draw do
 
   get "static_pages/home", as: "home"
   root :to => 'static_pages#home'
+  
+  
+  #get "static_pages/print_test", as: "print_test"
+  get "print_test", to: "static_pages#print_test", as: "print_test"
 
+  
   #get "new/services/summary", to: "new::services#summary" #or:
   namespace :newer do 
     get "services/summary", to: "services#summary"

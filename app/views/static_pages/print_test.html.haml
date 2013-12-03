@@ -1,0 +1,83 @@
+%p strona załadowana #{@time}  test: #{testSlipHelp} 
+
+%div 
+  Hello fiscal printer :-)
+  %p 
+  = form_tag("#", {method: "get", remote: "true", onsubmit:"versumPrinter.savePrinterConfiguration(driver.value, port.value); return false;"}) do 
+    = select_tag "driver", options_for_select({ "DFEmul"          => "DFEmul",
+                                                "Java console"    => :BogusFiscalPrinter,
+                                                "ElzabMera"       => "ElzabMera", 
+                                                "ElzabOmega2"     => "ElzabOmega2", 
+                                                "InnovaProfit451" => "InnovaProfit451", 
+                                                "OptimusVivo"     => "OptimusVivo", 
+                                                "Posnet101"       => "Posnet101", 
+                                                "Thermal101"      => "Thermal101",
+                                                "Thermal203"      => "Thermal203", 
+                                                "Thermal301"      => "Thermal301", 
+                                                "ThermalOld"      => "ThermalOld"}, 
+                                              :BogusFiscalPrinter)
+    .field 
+      = label_tag :port, "Serial port"
+      = text_field_tag :port, "COM5"
+    = submit_tag "Save configuration"
+  %hr
+  
+= form_tag("#", {method: "get", remote: "true", onsubmit: "versumPrinter.testApplet('hello world'); return false;"}) do
+  = submit_tag "test access to applet"
+  
+
+.print_server_applet     
+  :erb
+    <applet id="PrintingServerApplet"
+        name="fpsApplet"
+        code="name.prokop.bart.fps.applet.FiscalPrinterOblokApplet.class"
+        width=400
+        height=400
+      archive="java/fps-1.0-SNAPSHOT-applet.jar">
+
+      <param name="cache_option" value="no"/>
+      <param name="persistState" value="false" />
+
+      <param name="SerialPort" value="/dev/ttyS105">
+      <param name="FiscalPrinterType" value="BogusFiscalPrinter">
+      <param name="permissions" value="all-permissions"></param>
+    </applet>
+
+%hr
+Test of access to json for printing
+= form_tag("print_test.json", {method: "get", remote: "true"}) do
+  = select_tag "slip", options_for_select({ "one Cent Slip"       => "oneCentSlip",
+                                            "No Discount Slip"    => "noDiscountSlip",
+                                            "empty"                => "Slip"},
+                                            :"oneCentSlip.json")
+  = submit_tag "get json"
+
+
+%hr
+= form_tag("print_test.json", {method: "get", remote: "true"}) do 
+  = select_tag "slip", options_for_select({ "one Cent Slip"       => "oneCentSlip",
+                                            "No Discount Slip"    => "noDiscountSlip",
+                                            "Slip"                => "Slip"},
+                                            :"oneCentSlip.json")
+  = submit_tag "print"
+
+
+%hr
+#see-status SSE status: <br>
+
+#printing-status  Printing status: <br>
+
+%hr
+js test, start/stop pooling
+= submit_tag "start pooling", :type => 'button', :onclick => 'versumPrinter.startListeningForSlipsToPrint("http://oblok.test.pl:4000/print_test.json", {roundRobin: true} );'
+= submit_tag "stop pooling", :type => 'button', :onclick => 'versumPrinter.stopListeningForSlipsToPrint();'
+
+%hr
+#jsonoutput
+  use this to get sample Slips array a json: 
+  = submit_tag "get test slips as jason", :type => 'button', :onclick => 'versumPrinter.getTestSlipsAsJson();'
+  %ul
+
+
+
+= javascript_include_tag "printing"
