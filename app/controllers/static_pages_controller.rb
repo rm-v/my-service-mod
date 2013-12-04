@@ -1,7 +1,6 @@
 #encoding: utf-8
 class StaticPagesController < ApplicationController
    helper_method :all
-   @@call_count = 0
 
   def home
   end
@@ -74,11 +73,15 @@ class StaticPagesController < ApplicationController
   end
 
   def testRoundRobin
-    if @@call_count % 2 == 0
-      @@call_count += 1
+    Rails.logger.debug session.inspect
+    call_count = session[:testRoundRobin_call_count] || 0
+    if call_count % 2 == 0
+      call_count += 1
+      session[:testRoundRobin_call_count] = call_count
       @test_slips[:oneCentSlip]
     else
-      @@call_count += 1
+      call_count += 1
+      session[:testRoundRobin_call_count] = call_count
       @test_slips[:noDiscountSlip]
     end
   end
