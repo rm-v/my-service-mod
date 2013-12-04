@@ -44,7 +44,7 @@
     </applet>
 
 %hr
-Test of access to json for printing
+Test of access to json for printing (see responses from server in browser's developer tools)
 = form_tag("print_test.json", {method: "get", remote: "true"}) do
   = select_tag "slip", options_for_select({ "one Cent Slip"       => "oneCentSlip",
                                             "No Discount Slip"    => "noDiscountSlip",
@@ -53,8 +53,8 @@ Test of access to json for printing
   = submit_tag "get json"
 
 
-%hr
-= form_tag("print_test.json", {method: "get", remote: "true"}) do 
+%hr //TODO: somday, maybe, (if needed in testing)
+= form_tag("print_test.json", {method: "get", remote: "true"}) do
   = select_tag "slip", options_for_select({ "one Cent Slip"       => "oneCentSlip",
                                             "No Discount Slip"    => "noDiscountSlip",
                                             "Slip"                => "Slip"},

@@ -21,13 +21,36 @@
                     minTimeout: 10000,
                     maxTimeout: 10000,
                     multiplier: 1,
-                    type: 'json',
+                    type: 'text',
                     maxCalls: 0,
                     autoStop: 0,
                     verbose: 1
                     },
                     function(data, success, xhr, handle) {
                         console.log("message pooled from: " + data_source_url);
+                        console.log("received msg: " + JSON.stringify(data, null, " ") );
+                        versumPrinter.decodeAndPrintSlip(data);
+//                        versumPrinter.decodeAndPrintSlip( '{"cashbox" : "XX99",'+
+//
+//'                            "cashierName" : "Rafał ąćęłńóśźż",'+
+//'                            "created" : 1377262368237,'+
+//'                            "errorNote" : "Nowy",'+
+//'                            "printingState" : "Created",'+
+//'                            "reference" : "R-k 0123456789",'+
+//'                            "slipLines" : ['+
+//'                                { "amount" : 1,'+
+//'                                    "discount" : 0,'+
+//'                                    "discountType" : "NoDiscount",'+
+//'                                    "name" : "Test drukarki",'+
+//'                                    "price" : 0.01,'+
+//'                                    "taxRate" : "VAT23"'+
+//'                                } ],'+
+//'                            "slipPayments" : [ { "amount" : 0.01,'+
+//'                                "type" : "Cash"'+
+//'                            } ]'+
+//'                        }' );
+
+
                         //update_events_if_neccessary(data.last_event_update);
                 });
                 poolingActivated = true;
@@ -67,8 +90,8 @@
             }
 
             //TODO: error handling (results from applet) and sending printing status back to web server
-            addSlipToQueue(s);
-            printAll();
+            versumPrinter.addSlipToQueue(s);
+            versumPrinter.printAll();
         },
 
         /**
@@ -77,13 +100,17 @@
          * @returns {undefined}
          */
         addSlipToQueue: function (slip) {
+            console.log("in versumPrinter.addSlipToQueue");
             //$("#PrintingServerApplet")[0].test("trying to add slip to queue");
             $("#PrintingServerApplet")[0].addSlipToQueue(slip)
         },
 
 
         printAll: function() {
-            document.PrintingServerApplet.print();
+            console.log("in versumPrinter.printAll()");
+            $("#PrintingServerApplet")[0].printAllQueue();
+            //document.PrintingServerApplet.print();
+            //$("#PrintingServerApplet")[0].print();
             //document.applets[0].PrintingServerApplet.print();
         },
 
