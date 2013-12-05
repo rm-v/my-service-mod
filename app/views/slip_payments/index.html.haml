@@ -1,0 +1,25 @@
+%h1 Listing slip_payments
+
+%table
+  %tr
+    %th Amount
+    %th Name
+    %th Type
+    %th Receipt
+    %th
+    %th
+    %th
+
+  - @slip_payments.each do |slip_payment|
+    %tr
+      %td= slip_payment.amount
+      %td= slip_payment.name
+      %td= slip_payment.type
+      %td= slip_payment.receipt_id
+      %td= link_to 'Show', slip_payment
+      %td= link_to 'Edit', edit_slip_payment_path(slip_payment)
+      %td= link_to 'Destroy', slip_payment, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Slip payment', new_slip_payment_path

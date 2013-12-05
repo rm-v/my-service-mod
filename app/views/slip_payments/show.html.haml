@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @slip_payment.amount
+%p
+  %b Name:
+  = @slip_payment.name
+%p
+  %b Type:
+  = @slip_payment.type
+%p
+  %b Receipt:
+  = @slip_payment.receipt_id
+
+= link_to 'Edit', edit_slip_payment_path(@slip_payment)
+\|
+= link_to 'Back', slip_payments_path
