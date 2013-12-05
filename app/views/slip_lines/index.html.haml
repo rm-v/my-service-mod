@@ -1,0 +1,29 @@
+%h1 Listing slip_lines
+
+%table
+  %tr
+    %th Amount
+    %th Discount
+    %th Discount type
+    %th Name
+    %th Price
+    %th Tax rate
+    %th
+    %th
+    %th
+
+  - @slip_lines.each do |slip_line|
+    %tr
+      %td= slip_line.amount
+      %td= slip_line.discount
+      %td= slip_line.discount_type
+      %td= slip_line.name
+      %td= slip_line.price
+      %td= slip_line.tax_rate
+      %td= link_to 'Show', slip_line
+      %td= link_to 'Edit', edit_slip_line_path(slip_line)
+      %td= link_to 'Destroy', slip_line, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Slip line', new_slip_line_path

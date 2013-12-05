@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Amount:
+  = @slip_line.amount
+%p
+  %b Discount:
+  = @slip_line.discount
+%p
+  %b Discount type:
+  = @slip_line.discount_type
+%p
+  %b Name:
+  = @slip_line.name
+%p
+  %b Price:
+  = @slip_line.price
+%p
+  %b Tax rate:
+  = @slip_line.tax_rate
+
+= link_to 'Edit', edit_slip_line_path(@slip_line)
+\|
+= link_to 'Back', slip_lines_path

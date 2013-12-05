@@ -1,0 +1,28 @@
+= form_for @slip_line do |f|
+  - if @slip_line.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@slip_line.errors.count, "error")} prohibited this slip_line from being saved:"
+      %ul
+        - @slip_line.errors.full_messages.each do |msg|
+          %li= msg
+
+  .field
+    = f.label :amount
+    = f.text_field :amount
+  .field
+    = f.label :discount
+    = f.text_field :discount
+  .field
+    = f.label :discount_type
+    = f.text_field :discount_type
+  .field
+    = f.label :name
+    = f.text_field :name
+  .field
+    = f.label :price
+    = f.text_field :price
+  .field
+    = f.label :tax_rate
+    = f.text_field :tax_rate
+  .actions
+    = f.submit 'Save'

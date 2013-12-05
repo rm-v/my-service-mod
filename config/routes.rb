@@ -1,5 +1,8 @@
 MyServiceMod::Application.routes.draw do
 
+  resources :slip_lines
+
+
   resources :receipts
 
 
