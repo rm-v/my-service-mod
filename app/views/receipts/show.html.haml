@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b Cashbox:
+  = @receipt.cashbox
+%p
+  %b Cashier name:
+  = @receipt.cashier_name
+%p
+  %b Error note:
+  = @receipt.error_note
+%p
+  %b Printing state:
+  = @receipt.printing_state
+%p
+  %b Reference:
+  = @receipt.reference
+%p
+  %b Branch:
+  = @receipt.branch_id
+
+= link_to 'Edit', edit_receipt_path(@receipt)
+\|
+= link_to 'Back', receipts_path

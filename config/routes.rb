@@ -1,5 +1,8 @@
 MyServiceMod::Application.routes.draw do
 
+  resources :receipts
+
+
   get "static_pages/home", as: "home"
   root :to => 'static_pages#home'
   

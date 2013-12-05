@@ -1,0 +1,29 @@
+%h1 Listing receipts
+
+%table
+  %tr
+    %th Cashbox
+    %th Cashier name
+    %th Error note
+    %th Printing state
+    %th Reference
+    %th Branch
+    %th
+    %th
+    %th
+
+  - @receipts.each do |receipt|
+    %tr
+      %td= receipt.cashbox
+      %td= receipt.cashier_name
+      %td= receipt.error_note
+      %td= receipt.printing_state
+      %td= receipt.reference
+      %td= receipt.branch_id
+      %td= link_to 'Show', receipt
+      %td= link_to 'Edit', edit_receipt_path(receipt)
+      %td= link_to 'Destroy', receipt, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Receipt', new_receipt_path
